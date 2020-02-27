@@ -39,7 +39,7 @@ class MariaDB implements DatabaseGenerator
 
         $user = function ($connection) use ($config, $createUser) {
             if ($createUser) {
-                return $connection->statement("CREATE USER IF NOT EXISTS `{$config['username']}`@'{$config['host']}' IDENTIFIED BY '{$config['password']}'");
+                return $connection->statement("CREATE USER IF NOT EXISTS `{$config['username']}`@'{$config['host']}' IDENTIFIED WITH mysql_native_password  BY '{$config['password']}'");
             }
 
             return true;
